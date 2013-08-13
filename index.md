@@ -1,6 +1,6 @@
 ---
 layout: page
-title: chenDoInG's blog on github!
+title: 知而不难，难在不知，不怕不知，就怕无知!
 tagline: My blog
 ---
 {% include JB/setup %}
