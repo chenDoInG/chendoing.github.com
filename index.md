@@ -1,7 +1,7 @@
 ---
 layout: page
-title: 知而不难，难在不知，不怕不知，就怕无知!
-tagline: My blog
+title: 学海无涯
+tagline: chenDoInG的BLOG
 ---
 {% include JB/setup %}
 
