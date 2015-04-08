@@ -6,6 +6,11 @@
   <div class="span10">
     {{ content }}
     <hr>
+    <div class="copyright">
+      <p><strong>本文固定链接：</strong><a href='{{page.url}}'>chendoing.github.com{{page.url}}</a></p>
+      <p><strong>原创文章,转载请注明出处：</strong><a href='{{page.url}}'>chenDoInG's BloG</a></p> 
+    </div>
+    <hr>
     <div class="pagination">
       <ul>
       {% if page.previous %}
