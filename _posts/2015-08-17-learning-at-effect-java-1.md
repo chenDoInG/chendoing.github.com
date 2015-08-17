@@ -1,8 +1,8 @@
 ---
 layout: post
-title: "考虑用静态方法替代构造器"
+title: "Learning At Effect Java 1"
 description: ""
-category: 
+category: [java]
 tags: [Effect Java]
 ---
 {% include JB/setup %}
@@ -17,7 +17,7 @@ tags: [Effect Java]
 
 2.不必再每次调用他们的时候都创建一个新的对象
 
-          这使得不可变类使用预先构建好的实例，或者将构建好的实例缓存起来，重复利用，避免创建不必要的重复对象
+        这使得不可变类使用预先构建好的实例，或者将构建好的实例缓存起来，重复利用，避免创建不必要的重复对象
        
 3.可以返回原返回类型的任何子类型的对象
 
@@ -56,7 +56,7 @@ tags: [Effect Java]
           }
      }
 
-4. 创建参数化实例时，使代码更加简洁
+4.创建参数化实例时，使代码更加简洁
 
 ## 缺点：
 
