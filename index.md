@@ -18,7 +18,7 @@ Here's is my "posts list".
 <section>
 <h4>About me</h4>
 <div>
- 一个测试工程师，主要从事移动端相关工作。
+ 一个想改变世界的QA。
  <a href="/about.html">更多信息</a> 
 <br/>
 <br/>
