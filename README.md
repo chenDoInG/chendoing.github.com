@@ -1,7 +1,5 @@
-#chenDoInG[](chendoing.github.com)
+#jekylll blog
 
-
-=======
-chendoing.github.com[](chendoing.github.com)
-====================
-
+### 基于jekyll的blog
+### 使用bootstrap框架
+### font-awesome
