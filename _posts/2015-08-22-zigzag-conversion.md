@@ -1,6 +1,6 @@
 ---
 layout: post
-auth: chenDoInG
+author: chenDoInG
 title: "ZigZag Conversion"
 description: ""
 category: [Algorithms,Leetcode,java]
