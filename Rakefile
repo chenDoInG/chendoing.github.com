@@ -64,12 +64,13 @@ task :post do
   open(filename, 'w') do |post|
     post.puts "---"
     post.puts "layout: post"
+    post.puts "auth: chenDoInG"
     post.puts "title: \"#{title.gsub(/-/,' ')}\""
     post.puts 'description: ""'
     post.puts "category: #{category}"
     post.puts "tags: #{tags}"
     post.puts "---"
-    post.puts "{% include JB/setup %}"
+   #post.puts "{% include JB/setup %}"
   end
 end # task :post
 

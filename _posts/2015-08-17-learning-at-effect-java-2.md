@@ -1,11 +1,11 @@
 ---
 layout: post
+author: chenDoInG
 title: "Learning at Effect Java 2"
 description: ""
 category: [java]
 tags: [Effect Java]
 ---
-{% include JB/setup %}
 # 遇到多个构造器参数时考虑用构建器
 
 ## 原因

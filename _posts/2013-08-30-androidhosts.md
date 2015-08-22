@@ -1,11 +1,11 @@
 ---
 layout: post
+author: chenDoInG
 title: "Android手机修改hosts"
 description: ""
 category: [Android]
 tags: [Android]
 ---
-{% include JB/setup %}
 #Android手机修改host
 
 ## 1.下载adb工具

@@ -1,11 +1,11 @@
 ---
 layout: post
+author: chenDoInG
 title: "Think in Java——Arrays.asList"
 description: ""
 category: [java]
 tags: [java]
 ---
-{% include JB/setup %}
 #Arrays.asList
 
     List<Integer> list = Arrays.asList(1,2,3,4,5);

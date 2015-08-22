@@ -1,12 +1,11 @@
 ---
 layout: post
+author: chenDoInG
 title: "Think in Java——String"
 description: ""
 category: 
 tags: []
 ---
-{% include JB/setup %}
-
 #String,StringBuffer,StringBuilder的区别
 
 ##String:字符串常量

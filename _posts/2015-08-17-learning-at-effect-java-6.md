@@ -1,11 +1,11 @@
 ---
 layout: post
+author: chenDoInG
 title: "learning at effect java 6"
 description: ""
 category: [java]
 tags: [Effect Java]
 ---
-{% include JB/setup %}
 # 消除过期的对象引用
 
 ## **只要是自己管理内存，就应该警惕内存泄露问题**。一旦元素被释放掉，该元素中包含的任何对象引用都应该被清空。

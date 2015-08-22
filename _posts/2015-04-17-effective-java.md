@@ -1,11 +1,11 @@
 ---
 layout: post
+author: chenDoInG
 title: "Effective Java"
 description: ""
 category: 
 tags: []
 ---
-{% include JB/setup %}
 #Compare to使用注意技巧
 
 		￼public int compareTo(That that){

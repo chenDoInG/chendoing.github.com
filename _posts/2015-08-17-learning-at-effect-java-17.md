@@ -1,11 +1,11 @@
 ---
 layout: post
+author: chenDoInG
 title: "learning at effect java 17"
 description: ""
 category: [java]
 tags: [Effect Java]
 ---
-{% include JB/setup %}
 # 多用组合少用继承
 
 **tips**:在包内部使用继承是非常安全的，子类和超类的实现都处于同一个程序员的控制。

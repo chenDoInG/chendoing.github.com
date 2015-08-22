@@ -1,11 +1,11 @@
 ---
 layout: post
+author: chenDoInG
 title: "Jekyll Quick Start"
 description: ""
 category: 
 tags: [Jekyll]
 ---
-{% include JB/setup %}
 
 #Jekyll命令
 

@@ -1,11 +1,11 @@
 ---
 layout: post
+author: chenDoInG
 title: "Learning At Effect Java 1"
 description: ""
 category: [java]
 tags: [Effect Java]
 ---
-{% include JB/setup %}
 # 考虑用静态方法替代构造器
 
 ## 优点:
