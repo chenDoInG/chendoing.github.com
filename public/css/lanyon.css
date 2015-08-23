@@ -991,10 +991,16 @@ div.article a:focus {
 /*顶部栏*/
 /*小于800px时隐藏简介，站名居中显示*/
 @media screen and (max-width: 800px) {
+  .chendoing {
+    margin-left: 10px;
+  }
   .masthead-title {
     text-align: center;
   }
   .masthead-title small {
+    display: none;
+  }
+  .masthead-link ul {
     display: none;
   }
 }
