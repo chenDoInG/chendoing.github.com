@@ -1,6 +1,6 @@
 ---
 layout: post
-author: 褪墨
+author: other
 title: "review myself"
 description: ""
 category: 个人提升
