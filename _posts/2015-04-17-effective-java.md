@@ -6,7 +6,7 @@ description: ""
 category: 
 tags: []
 ---
-#Compare to使用注意技巧
+##Compare to使用注意技巧
 
 		￼public int compareTo(That that){
 			return this.a - that.a;

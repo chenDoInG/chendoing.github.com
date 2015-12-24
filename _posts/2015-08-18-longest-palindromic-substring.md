@@ -6,7 +6,7 @@ description: ""
 category: [Algorithms,LeetCode,java]
 tags: [Algorithms,LeetCode,java]
 ---
-# Given a string S, find the longest palindromic substring in S.
+## Given a string S, find the longest palindromic substring in S.
 
 **回文特点：**以一个字符为中心两边字符全相等或者以一个空字符为中心两边字符全相等
 

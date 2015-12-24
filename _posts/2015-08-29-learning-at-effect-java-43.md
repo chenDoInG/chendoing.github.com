@@ -6,7 +6,7 @@ description: ""
 category: Effect Java
 tags: [Effect Java]
 ---
-# 返回零长度的数组或者集合，而不是null
+## 返回零长度的数组或者集合，而不是null
 
 常态：当数组或者集合为空时，返回一个null
 	
@@ -25,7 +25,7 @@ tags: [Effect Java]
 			…
 		
 
-## 改进方案：返回一个空数组或者空集合
+### 改进方案：返回一个空数组或者空集合
 	private final List<Cheese> cheesesInStock = …
 	
 	private static final Cheese[] EMPTY_CHEESES = new Cheese[0];

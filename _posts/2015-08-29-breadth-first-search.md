@@ -6,11 +6,11 @@ description: ""
 category: Algorithms
 tags: [Algorithms]
 ---
-# 广度优先搜索算法（Breadth-First-Search）
+## 广度优先搜索算法（Breadth-First-Search）
 
  又译作宽度优先搜索，或横向优先搜索，简称BFS，是一种图形搜索算法。
 
-## 原理：从初始访问结点出发，访问该结点的所有邻接结点，然后依次以初始结点的邻接结点为初始访问结点，继续计算邻接结点，直到所有结点都被访问。
+### 原理：从初始访问结点出发，访问该结点的所有邻接结点，然后依次以初始结点的邻接结点为初始访问结点，继续计算邻接结点，直到所有结点都被访问。
 
 ![alt='bfs'](/public/img/bfs.png)
 

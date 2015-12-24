@@ -6,16 +6,16 @@ description: ""
 category: [Algorithms,Leetcode,java]
 tags: []
 ---
-# ZigZag Conversion 
+## ZigZag Conversion 
 
-## The string "PAYPALISHIRING" is written in a zigzag pattern on a given number of rows like this: (you may want to display this pattern in a fixed font for better legibility)
+### The string "PAYPALISHIRING" is written in a zigzag pattern on a given number of rows like this: (you may want to display this pattern in a fixed font for better legibility)
 
 		P   A   H   N
 		A P L S I I G
 		Y   I   R
-## And then read line by line: "PAHNAPLSIIGYIR"
+### And then read line by line: "PAHNAPLSIIGYIR"
 
-### 思路：每个转弯长度离下一个转弯距离是固定的，除了首行和末行是每个转弯是一个字符外，其他行都是两个字符
+#### 思路：每个转弯长度离下一个转弯距离是固定的，除了首行和末行是每个转弯是一个字符外，其他行都是两个字符
 
 		P   | A   | H   | N     
 		A P | L S | I I | G 

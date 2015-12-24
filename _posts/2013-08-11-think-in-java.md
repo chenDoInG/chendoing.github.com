@@ -6,7 +6,7 @@ description: ""
 category: [java]
 tags: [java]
 ---
-#Arrays.asList
+##Arrays.asList
 
     List<Integer> list = Arrays.asList(1,2,3,4,5);
     list.set(1,99);
