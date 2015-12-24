@@ -6,7 +6,7 @@ description: ""
 category: 个人提升
 tags: [个人提升]
 ---
-# 吾日三省吾身
+## 吾日三省吾身
 
 转载自[褪墨](http://www.mifengtd.cn/articles/daily-self-reflection-iaidehua.html)
 
