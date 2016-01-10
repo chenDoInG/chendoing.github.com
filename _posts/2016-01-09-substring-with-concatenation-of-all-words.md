@@ -6,8 +6,6 @@ description: ""
 category: algorithm,java
 tags: [algorithm,java,LeetCode]
 ---
-# Substring with Concatenation of All Words
-
 
 翻译自[N00tc0d3r](http://n00tc0d3r.blogspot.sg/2013/06/substring-with-concatenation-of-all.html)（请自行翻墙）
 
