@@ -3,8 +3,8 @@ layout: post
 author: chenDoInG
 title: "Substring with Concatenation of All Words"
 description: ""
-category: [algorithm,java]
-tags: [algorithm,java,LeetCode]
+category: [algorithms,java]
+tags: [algorithms,java,LeetCode]
 ---
 
 翻译自[N00tc0d3r](http://n00tc0d3r.blogspot.sg/2013/06/substring-with-concatenation-of-all.html)（请自行翻墙）
