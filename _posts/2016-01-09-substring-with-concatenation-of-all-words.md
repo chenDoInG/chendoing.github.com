@@ -151,29 +151,29 @@ tags: [algorithm,java,LeetCode]
    		// find concatenations  
    		for (int i=0; i < wordLen; ++i) {  
      		// check if there are any concatenations  
-     int count = 0;  
-     HashMap<String, Integer> collectWords = new HashMap<String, Integer>(expectWords);  
-     for (int j = i, begin = i; j <= S.length() - (total-count)*wordLen && begin <= S.length() - total*wordLen;) {  
-       String sub = S.substring(j, j+wordLen);  
-       if (!expectWords.containsKey(sub)) { // if not an expect word, reset  
-         begin = j + wordLen;  
-         j = begin;  
-         count = 0;  
-         collectWords.putAll(expectWords);  
-       } else if (!collectWords.containsKey(sub)) { // if duplicate, forward begin by 1  
-         begin = slideWindow(S, begin, wordLen, collectWords);  
-       } else {  
-         removeWord(sub, collectWords);  
-         j += wordLen;  
-         ++count;  
-         if (collectWords.isEmpty()) {  
-           indices.add(begin);  
-           begin = slideWindow(S, begin, wordLen, collectWords);  
-           --count;  
-         }  
-       }  
-     }  
-   	}  
+     		int count = 0;  
+     		HashMap<String, Integer> collectWords = new HashMap<String, Integer>(expectWords);  
+     		for (int j = i, begin = i; j <= S.length() - (total-count)*wordLen && begin <= S.length() - total*wordLen;) {  
+      			String sub = S.substring(j, j+wordLen);  
+       			if (!expectWords.containsKey(sub)) { // if not an expect word, reset  
+         			begin = j + wordLen;  
+         			j = begin;  
+         			count = 0;  
+         		collectWords.putAll(expectWords);  
+       			} else if (!collectWords.containsKey(sub)) { // if duplicate, forward begin by 1  
+         			begin = slideWindow(S, begin, wordLen, collectWords);  
+       			} else {  
+         			removeWord(sub, collectWords);  
+         			j += wordLen;  
+         			++count;  
+         			if (collectWords.isEmpty()) {  
+           				indices.add(begin);  
+           				begin = slideWindow(S, begin, wordLen, collectWords);  
+           				--count;  
+         			}  
+       			}  
+     		}  
+   		}  
    
-   	return indices;  
- 	}  
+   		return indices;  
+ 		}  
