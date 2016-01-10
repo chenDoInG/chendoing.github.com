@@ -3,7 +3,7 @@ layout: post
 author: chenDoInG
 title: "Substring with Concatenation of All Words"
 description: ""
-category: algorithm,java
+category: [algorithm,java]
 tags: [algorithm,java,LeetCode]
 ---
 
