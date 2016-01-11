@@ -175,3 +175,54 @@ tags: [algorithms,java,LeetCode]
    
    		return indices;  
  		}  
+ 	
+ 	
+###这哥么的算法使用map的putAll浪费的大量的时间，以下是我优化后的，减少了大量的map复制时间（leetCode里面结果从59ms->18ms）
+
+		public ArrayList<Integer> findSubstring(String s, String[] words) {
+        ArrayList<Integer> indices = new ArrayList<>();
+        if (words.length == 0) return indices;
+
+        int total = words.length, wordLen = words[0].length();
+
+        // store the words and frequencies in a hash table
+        HashMap<String, Integer> expectWords = new HashMap<>();
+        for (String w : words) {
+            addWord(w, expectWords);
+        }
+
+        HashMap<String, Integer> check = new HashMap<>();
+
+        // find concatenations
+        for (int i = 0; i < wordLen; i++) {
+            // check if there are any concatenations
+            check.clear();
+            int begin = i, cursor = i, count = 0;
+            while (begin <= s.length() - total * wordLen && cursor - begin <= total * wordLen) {
+                String sub = s.substring(cursor, cursor + wordLen);
+                if (!expectWords.containsKey(sub)) {
+                    begin = cursor + wordLen;
+                    cursor = begin;
+                    count = 0;
+                    check.clear();
+                } else if (Objects.equals(check.get(sub), expectWords.get(sub))) { // if duplicate, forward begin by 1
+                    removeWord(s.substring(begin, begin + wordLen), check);
+                    begin += wordLen;
+                    count--;
+                } else {
+                    addWord(sub, check);
+                    cursor += wordLen;
+                    ++count;
+                    if (count == total) {
+                        indices.add(begin);
+                        begin += wordLen;
+                        cursor = begin;
+                        count = 0;
+                        check.clear();
+                    }
+                }
+            }
+        }
+
+        return indices;
+    }
