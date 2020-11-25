@@ -1,13 +1,13 @@
 ---
 layout: post
 author: chenDoInG
-title: "macOS launchctl"
+title: "macOS定时任务命令launchctl"
 description: ""
 category: [Mac,MacOS,tools]
 tags: [Mac,MacOS]
 ---
 
-# Mac定时任务命令：launchctl
+# macOS定时任务命令：launchctl
 
 macOS通过launchctl命令加载plist配置文件来管理定时任务
 
@@ -37,7 +37,6 @@ macOS通过launchctl命令加载plist配置文件来管理定时任务
 4、StartCalendarInterval：运行的时间，单个时间点使用dict，多个时间点使用 array <dict>
 5、StartInterval：时间间隔，与StartCalendarInterval使用其一，单位为秒
 6、StandardInPath、StandardOutPath、StandardErrorPath：标准的输入输出错误文件，这里建议不要使用 .log 作为后缀，会打不开里面的信息。
-7、定时启动任务时，如果涉及到网络，但是电脑处于睡眠状态，是执行不了的，这个时候，可以定时的启动屏幕就好了
 ```
 
 ## launchctl命令
