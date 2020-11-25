@@ -14,7 +14,7 @@ tags: [algorithms,java,LeetCode]
 ## 题目：
 ​		Substring with Concatenation of All Words
 
-```java
+```reStructuredText
 	You are given a string, S, and a list of words, L, that are all of the same length. Find all starting indices of substring(s) in S that is a concatenation of each word in L exactly once and without any intervening characters.
 
 	For example, given:
@@ -58,43 +58,44 @@ tags: [algorithms,java,LeetCode]
 
 判断每个字符的时间复杂度是O(k\*M)=O(m)，我们需要判断(n-k\*m)次，所以总的时间复杂度是O((n-k\*m)\*m)。因为我们创建了一个hashTable，所以空间复杂度是取决于词组L的单词总数，也就是O(k\*m) = O(m).
 
-```java
+```
 public ArrayList<Integer> findSubstring(String S, String[] L) {  
-ArrayList<Integer> indices = new ArrayList<Integer>();  
-   		if (L.length == 0) return indices;  
+  
+  			ArrayList<Integer> indices = new ArrayList<Integer>();  
+        if (L.length == 0) return indices;  
 
-   		int total = L.length, wordLen = L[0].length();  
+        int total = L.length, wordLen = L[0].length();  
 
-   		// store the words and frequencies in a hash table  
-   		HashMap<String, Integer> words = new HashMap<String, Integer>();  
-   		for (String s : L) {  
-     		if (words.containsKey(s)) {  
-       			words.put(s, words.get(s)+1);  
-     		} else {  
-       			words.put(s, 1);  
-     		}  
-   		}  
+        // store the words and frequencies in a hash table  
+        HashMap<String, Integer> words = new HashMap<String, Integer>();  
+        for (String s : L) {  
+          if (words.containsKey(s)) {  
+              words.put(s, words.get(s)+1);  
+          } else {  
+              words.put(s, 1);  
+          }  
+        }  
 
-   		// find concatenations  
-   		for (int i=0; i <= S.length() - total*wordLen; ++i) {  
-    		 // check if it is a concatenation   
-     		HashMap<String, Integer> target = new HashMap<String, Integer>(words);  
-     		for (int j = i; j <= S.length() - wordLen && !target.isEmpty(); j+=wordLen) {  
-       			String sub = S.substring(j, j+wordLen);  
-       			if (!target.containsKey(sub)) break;  
-       			if (target.get(sub) > 1) {  // reduce the frequency
-         			target.put(sub, target.get(sub)-1);  
-       			} else {  // remove the word if only one left
-         			target.remove(sub);  
-       			}
-     		}  
-     		if (target.isEmpty()) {  
-       			indices.add(i);  
-     		}  
-   		}  
+        // find concatenations  
+        for (int i=0; i <= S.length() - total*wordLen; ++i) {  
+           // check if it is a concatenation   
+          HashMap<String, Integer> target = new HashMap<String, Integer>(words);  
+          for (int j = i; j <= S.length() - wordLen && !target.isEmpty(); j+=wordLen) {  
+              String sub = S.substring(j, j+wordLen);  
+              if (!target.containsKey(sub)) break;  
+              if (target.get(sub) > 1) {  // reduce the frequency
+                target.put(sub, target.get(sub)-1);  
+              } else {  // remove the word if only one left
+                target.remove(sub);  
+              }
+          }  
+          if (target.isEmpty()) {  
+              indices.add(i);  
+          }  
+        }  
 
-   	return indices;  
- 	}  
+      	return indices; 
+}  
  	
 ```
 观察上面的算法，我们发现对于每个子串都有被重复检查。我们有必要重复检查每个字符后的所有子串么？答案是“没必要”。
@@ -115,7 +116,7 @@ ArrayList<Integer> indices = new ArrayList<Integer>();
 
 我们检查每个字符串最多两次，一次将字符串加到集合中，另外一次将字符串从集合中移除。因此时间复杂度是O(n)，这里n是字符串的长度。检查每个字符串是否是词组L中的单词，复杂度O(k)=O(1)。所以实际上的时间复杂度是O(n*k) = O(n)。
 
-```java
+```ja
 private void addWord(String w, HashMap<String, Integer> words) {  
 if (words.containsKey(w)) {  
      		words.put(w, words.get(w)+1);  
@@ -179,15 +180,12 @@ if (words.containsKey(w)) {
    		}  
 
    		return indices;  
- 		} 
+ 		}  	
+ 	
 ```
-
- 	
- 	
-
 ### 优化：原来的解法使用map的putAll浪费的大量的时间，以下是我优化后的，减少了大量的map复制时间（leetCode里面结果从59ms->17ms）
 
-```java
+```
 	public ArrayList<Integer> findSubstring(String s, String[] words) {
     ArrayList<Integer> indices = new ArrayList<>();
     int total, wordLen;
@@ -232,3 +230,4 @@ if (words.containsKey(w)) {
     return indices;
 }
 ```
+
