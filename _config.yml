@@ -11,8 +11,8 @@ permalink:        pretty
 favicon:          /public/img/chenDoInG.ico
 title:            chenDoInG
 tagline:          '想法太多而书读太少'
-description:      'Hello,World! Here is my personal weblog about technology and life.'
-url:              http://shelldone.com
+description:      'Here is my personal weblog about technology and life.'
+url:              https://chendoing.github.io
 
 author:
   name:           'chenDoInG'
