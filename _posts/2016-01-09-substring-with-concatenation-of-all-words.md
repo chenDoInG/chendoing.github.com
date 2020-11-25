@@ -11,21 +11,23 @@ tags: [algorithms,java,LeetCode]
 
 学习下技术文章到底应该怎么写，对比于百度搜索出来的各种解题思路，我只能呵呵！
 
-##题目：
-		Substring with Concatenation of All Words
+## 题目：
+​		Substring with Concatenation of All Words
 
-		You are given a string, S, and a list of words, L, that are all of the same length. Find all starting indices of substring(s) in S that is a concatenation of each word in L exactly once and without any intervening characters.
+```java
+	You are given a string, S, and a list of words, L, that are all of the same length. Find all starting indices of substring(s) in S that is a concatenation of each word in L exactly once and without any intervening characters.
 
-		For example, given:
-		S: "barfoothefoobarman"
-		L: ["foo", "bar"]
+	For example, given:
+	S: "barfoothefoobarman"
+	L: ["foo", "bar"]
 
-		You should return the indices: [0,9].
-		(order does not matter).
-		
-		举例：给定一个字符串S，和一个包含m个单词的词组L，每个单词长度为k，如果字符串S里包含由词组L中所有单词组成的字符串子串，返回该子串的起始位置
-		
-##解题思路：
+	You should return the indices: [0,9].
+	(order does not matter).
+	
+	举例：给定一个字符串S，和一个包含m个单词的词组L，每个单词长度为k，如果字符串S里包含由词组L中所有单词组成的字符串子串，返回该子串的起始位置
+```
+
+## 解题思路：
 
 基本想法是遍历字符串S的每个字符，判断当前字符是否是词组L中某个单词的开头
 
@@ -36,10 +38,10 @@ tags: [algorithms,java,LeetCode]
 ###怎么判断每个子串是集合L中的单词？
 
   最简单的方法是拿子串和词组L中的每个单词比较。但是对于每个子串，时间复杂度是O(m)，当我们有特别多的子串或者词组中单词总数特别多时，时间开销代价特别高。实际上的时间复杂度是O(k*m) = O(m)，这里k是单词的长度。这意味着如果单词的长度不是特别短的话，时间开销的代价会更高。
-  
+
   **我们可以将词组L的单词存储在一个hashTable里，而hashTable搜索的时间复杂度是O(1)**
-  
-###什么样的hashTable？怎么判断重复子串?如果词组L本身包含重复单词？
+
+### 什么样的hashTable？怎么判断重复子串?如果词组L本身包含重复单词？
 
 我们创建了一个包含词组L中所有单词的hashTable。每当有子串匹配上单词时，我们将该单词从这个hashTable移除。我们使用HashMap<String,Integer>来替代HashMap<String,Boolean>以便于统计词组L中每个单词的出现次数。因此每当有子串匹配上单词时，我们将HashMap中该词组的次数减一直到次数为零时，我们将该单词从HashMap中移除。
 
@@ -51,17 +53,18 @@ tags: [algorithms,java,LeetCode]
 
 	* 后续所有长度为k的子串都是词组L中的单词。
 	* 词组L中的每个单词仅出现一次。
-	
-###这个算法的复杂度是什么？
+
+### 这个算法的复杂度是什么？
 
 判断每个字符的时间复杂度是O(k\*M)=O(m)，我们需要判断(n-k\*m)次，所以总的时间复杂度是O((n-k\*m)\*m)。因为我们创建了一个hashTable，所以空间复杂度是取决于词组L的单词总数，也就是O(k\*m) = O(m).
 
-	public ArrayList<Integer> findSubstring(String S, String[] L) {  
-   		ArrayList<Integer> indices = new ArrayList<Integer>();  
+```java
+public ArrayList<Integer> findSubstring(String S, String[] L) {  
+ArrayList<Integer> indices = new ArrayList<Integer>();  
    		if (L.length == 0) return indices;  
-   
+
    		int total = L.length, wordLen = L[0].length();  
-   
+
    		// store the words and frequencies in a hash table  
    		HashMap<String, Integer> words = new HashMap<String, Integer>();  
    		for (String s : L) {  
@@ -71,7 +74,7 @@ tags: [algorithms,java,LeetCode]
        			words.put(s, 1);  
      		}  
    		}  
-   
+
    		// find concatenations  
    		for (int i=0; i <= S.length() - total*wordLen; ++i) {  
     		 // check if it is a concatenation   
@@ -89,10 +92,11 @@ tags: [algorithms,java,LeetCode]
        			indices.add(i);  
      		}  
    		}  
-   
+
    	return indices;  
  	}  
  	
+```
 观察上面的算法，我们发现对于每个子串都有被重复检查。我们有必要重复检查每个字符后的所有子串么？答案是“没必要”。
 
 我们可以使用和[KMP字符串匹配算法](http://en.wikipedia.org/wiki/Knuth–Morris–Pratt_algorithm)相似的的策略：
@@ -107,18 +111,19 @@ tags: [algorithms,java,LeetCode]
 * 如果该子串是词组L中的单词但是已经被搜索过了(比如，重复的单词),向后移动begin直到重复的单词从当前的计算窗口移除了
 * 否则，将该子串加入当前集合。如果我们计算完所有的单词(例如，得到一个正确的结果),向后移动begin检查下一个字符串子串
 
-###现在这个算法的复杂度是什么？
+### 现在这个算法的复杂度是什么？
 
 我们检查每个字符串最多两次，一次将字符串加到集合中，另外一次将字符串从集合中移除。因此时间复杂度是O(n)，这里n是字符串的长度。检查每个字符串是否是词组L中的单词，复杂度O(k)=O(1)。所以实际上的时间复杂度是O(n*k) = O(n)。
 
-	private void addWord(String w, HashMap<String, Integer> words) {  
-   		if (words.containsKey(w)) {  
+```java
+private void addWord(String w, HashMap<String, Integer> words) {  
+if (words.containsKey(w)) {  
      		words.put(w, words.get(w)+1);  
    		} else {  
      		words.put(w, 1);  
    		}  
  	}  
-   
+
  	private void removeWord(String w, HashMap<String, Integer> words) {  
    		if (!words.containsKey(w)) return;  
    		if (words.get(w) > 1) {  
@@ -127,25 +132,25 @@ tags: [algorithms,java,LeetCode]
      		words.remove(w);  
    		}  
  	}  
-   
+
  	private int slideWindow(String S, int begin, int wordLen, HashMap<String, Integer> words) {  
    		String old = S.substring(begin, begin+wordLen);  
    		addWord(old, words);  
    		return begin+wordLen;  
  	}  
-   
+
  	public ArrayList<Integer> findSubstring(String S, String[] L) {  
    		ArrayList<Integer> indices = new ArrayList<Integer>();  
    		if (L.length == 0) return indices;  
-   
+
    		int total = L.length, wordLen = L[0].length();  
-   
+
    		// store the words and frequencies in a hash table  
    		HashMap<String, Integer> expectWords = new HashMap<String, Integer>();  
    		for (String w : L) {  
      		addWord(w, expectWords);  
    		}  
-   
+
    		// find concatenations  
    		for (int i=0; i < wordLen; ++i) {  
      		// check if there are any concatenations  
@@ -172,53 +177,58 @@ tags: [algorithms,java,LeetCode]
        			}  
      		}  
    		}  
-   
+
    		return indices;  
- 		}  
+ 		} 
+```
+
  	
  	
-###这哥么的算法使用map的putAll浪费的大量的时间，以下是我优化后的，减少了大量的map复制时间（leetCode里面结果从59ms->17ms）
 
-		public ArrayList<Integer> findSubstring(String s, String[] words) {
-        ArrayList<Integer> indices = new ArrayList<>();
-        int total, wordLen;
-        if ((total = words.length) == 0 || (wordLen = words[0].length()) == 0 || s.length() < wordLen) return indices;
+### 优化：原来的解法使用map的putAll浪费的大量的时间，以下是我优化后的，减少了大量的map复制时间（leetCode里面结果从59ms->17ms）
 
-        // store the words and frequencies in a hash table
-        HashMap<String, Integer> expectWords = new HashMap<>();
-        for (String w : words) {
-            addWord(w, expectWords);
-        }
+```java
+	public ArrayList<Integer> findSubstring(String s, String[] words) {
+    ArrayList<Integer> indices = new ArrayList<>();
+    int total, wordLen;
+    if ((total = words.length) == 0 || (wordLen = words[0].length()) == 0 || s.length() < wordLen) return indices;
 
-        HashMap<String, Integer> check = new HashMap<>();
+    // store the words and frequencies in a hash table
+    HashMap<String, Integer> expectWords = new HashMap<>();
+    for (String w : words) {
+        addWord(w, expectWords);
+    }
 
-        // find concatenations
-        for (int i = 0; i < wordLen; i++) {
-            // check if there are any concatenations
-            check.clear();
-            int begin = i, cursor = i;
-            while (begin <= s.length() - total * wordLen) {
-                String sub = s.substring(cursor, cursor + wordLen);
-                if (!expectWords.containsKey(sub)) {
-                    begin = cursor + wordLen;
+    HashMap<String, Integer> check = new HashMap<>();
+
+    // find concatenations
+    for (int i = 0; i < wordLen; i++) {
+        // check if there are any concatenations
+        check.clear();
+        int begin = i, cursor = i;
+        while (begin <= s.length() - total * wordLen) {
+            String sub = s.substring(cursor, cursor + wordLen);
+            if (!expectWords.containsKey(sub)) {
+                begin = cursor + wordLen;
+                cursor = begin;
+                check.clear();
+            } else if (Objects.equals(check.get(sub), expectWords.get(sub))) {
+                // if duplicate, forward begin
+                removeWord(s.substring(begin, begin + wordLen), check);
+                begin += wordLen;
+            } else {
+                addWord(sub, check);
+                cursor += wordLen;
+                if (cursor - begin == total * wordLen) {
+                    indices.add(begin);
+                    begin += wordLen;
                     cursor = begin;
                     check.clear();
-                } else if (Objects.equals(check.get(sub), expectWords.get(sub))) {
-                    // if duplicate, forward begin
-                    removeWord(s.substring(begin, begin + wordLen), check);
-                    begin += wordLen;
-                } else {
-                    addWord(sub, check);
-                    cursor += wordLen;
-                    if (cursor - begin == total * wordLen) {
-                        indices.add(begin);
-                        begin += wordLen;
-                        cursor = begin;
-                        check.clear();
-                    }
                 }
             }
         }
-
-        return indices;
     }
+
+    return indices;
+}
+```
