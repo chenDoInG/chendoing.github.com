@@ -618,7 +618,10 @@ a.sidebar-nav-item:focus {
 .post  .post-content {
     padding: 0 25px;
 }
-
+.home-post-content{
+    height:600px;
+    overflow:hidden;
+}
 /*头像*/
 .post-heading img {
   float: left;
