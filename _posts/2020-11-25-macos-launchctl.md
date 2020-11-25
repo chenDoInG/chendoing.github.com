@@ -30,7 +30,7 @@ macOS通过launchctl命令加载plist配置文件来管理定时任务
 
 ## plist标签说明
 
-```cpp
+```
 1、Label：对应的需要保证全局唯一性；
 2、Program：要运行的程序；
 3、ProgramArguments：命令语句
@@ -42,7 +42,7 @@ macOS通过launchctl命令加载plist配置文件来管理定时任务
 
 ## launchctl命令
 
-```cpp
+```
 # 加载任务, -w选项会将plist文件中无效的key覆盖掉，建议加上
 $ launchctl load -w com.xx.xx.plist
 
@@ -65,13 +65,13 @@ $ launchctl stop   com.xx.xx.plist
 
 ## 一、编写一个启动脚本run.sh
 
-```shell
+```
 cd ~/Library/LaunchAgents
 vi run.sh
 mkdir log
 ```
 
-```sh
+```
 #!/bin/sh
 
 # 进入launch.py程序所在目录
@@ -88,7 +88,7 @@ echo 'finish' >> log/run.log
 
 ## 二、编写python脚本test.py
 
-```python
+```
 #!/usr/local/bin/python3
 # -*- coding:utf-8 -*-
 
@@ -108,7 +108,7 @@ add(path, now_time)
 
 ## 三、测试下脚本是否可以运行
 
-```sh
+```
 ./run.sh
 cat log/run.log
 ```
@@ -117,7 +117,7 @@ cat log/run.log
 
 执行
 
-```sh
+```
 chmod 754 run.sh
 ```
 
@@ -135,7 +135,7 @@ chmod 754 run.sh
 
 ## 四、编写plist
 
-```sh
+```
 vi com.test.plist
 ```
 
@@ -190,7 +190,7 @@ vi com.test.plist
 
 ## 五、启动launctl
 
-```sh
+```
 launchctl load -w com.test.plist
 tail -f log/run*
 ```
