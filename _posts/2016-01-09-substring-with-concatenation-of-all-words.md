@@ -1,6 +1,6 @@
 ---
 layout: post
-author: chenDoInG
+author: N00tc0d3r
 title: "Substring with Concatenation of All Words"
 description: ""
 category: [algorithms,java]
