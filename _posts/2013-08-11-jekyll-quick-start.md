@@ -22,14 +22,10 @@ rake post title="Hello World"
 rake page name="about.md"
  ```
 
-
-
 #### Create a nested page:
-     ```javascript
+```javascript
 rake page name="pages/about.md"
-     ```
-
-
+```
 
 #### Create a page with a “pretty” path:
    ```javascript
