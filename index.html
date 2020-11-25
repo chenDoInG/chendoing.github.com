@@ -9,7 +9,7 @@ title: Home
   {% for post in paginator.posts %}
   <div class="post">
     <div class="post-heading">
-      <img src="/public/img/{% if page.author=="chenDoInG" %}chenDoInG{% else %}other{% endif %}.jpg">
+      <img src="/public/img/{% if post.author=="chenDoInG" %}chenDoInG{% else %}other{% endif %}.jpg">
       <h1 class="post-title">
         <a class="post-title-home" href="{{ post.url }}">
           {{ post.title }}
@@ -29,7 +29,7 @@ title: Home
         <span class="post-info"><a href="/tag/index.html#{{ post.tags[2] }}">{{ post.tags[2] }}</a></span>
     </div>
     <div class="post-content">
-      <div class="homt-post-content">	
+      <div class="home-post-content">	
       {{ post.content | split:"<!-- more -->" | first  }}
       </div>
       <div class="readmore">
