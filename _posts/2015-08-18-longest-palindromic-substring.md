@@ -3,7 +3,7 @@ layout: post
 author: chenDoInG
 title: "Longest Palindromic Substring"
 description: ""
-category: [Algorithms,LeetCode,java]
+category: [Algorithms,Leetcode,java]
 tags: [Algorithms,LeetCode,java]
 ---
 ## Given a string S, find the longest palindromic substring in S.
@@ -15,43 +15,43 @@ tags: [Algorithms,LeetCode,java]
 tips：在每个字符的两边都插入一个特殊的符号，将所有可能的奇数/偶数长度的回文子串都转换成了奇数长度。比如 abba 变成 #a#b#b#a#， aba变成 #a#b#a#。原来可能需要两个判断相近的两位字符是否相等和该字符两边的字符是否相等，现在只需要一个判断该字符两边的字符是否相等，以空间换取时间。
 
 		public String logestPalindrome(String s){
-        	if(s ==null)
-            	return null;
-        	int length = 2*s.length()+1;
-        	char[] filledStr = fillStringBySign(s.toCharArray());
-        	int point4LongestPalindrome = -1;
-        	int maxRadius = -1;
-        	for (int i = 0; i < length; i++) {
-            	int radius = 1;
-            	while (i-radius>=0&&i+radius<length&&filledStr[i-radius]==filledStr[i+radius]) {
-                	radius++;
-            	}
-            	if(radius>maxRadius){
-                	maxRadius = radius;
-                	point4LongestPalindrome = i;
-            	}
-        	}
-        	char[] result = new char[maxRadius-1];
-        	int j = 0;
-        	for (int i = point4LongestPalindrome - maxRadius + 1; i < point4LongestPalindrome + maxRadius; i++) {
-            	if (filledStr[i] != '#') {
-                	result[j] = filledStr[i];
-                	j++;
-            	}
-        	}
-        	return String.valueOf(result);
-    	}
-
+	    	if(s ==null)
+	        	return null;
+	    	int length = 2*s.length()+1;
+	    	char[] filledStr = fillStringBySign(s.toCharArray());
+	    	int point4LongestPalindrome = -1;
+	    	int maxRadius = -1;
+	    	for (int i = 0; i < length; i++) {
+	        	int radius = 1;
+	        	while (i-radius>=0&&i+radius<length&&filledStr[i-radius]==filledStr[i+radius]) {
+	            	radius++;
+	        	}
+	        	if(radius>maxRadius){
+	            	maxRadius = radius;
+	            	point4LongestPalindrome = i;
+	        	}
+	    	}
+	    	char[] result = new char[maxRadius-1];
+	    	int j = 0;
+	    	for (int i = point4LongestPalindrome - maxRadius + 1; i < point4LongestPalindrome + maxRadius; i++) {
+	        	if (filledStr[i] != '#') {
+	            	result[j] = filledStr[i];
+	            	j++;
+	        	}
+	    	}
+	    	return String.valueOf(result);
+		}
+	
 		private char[] fillStringBySign(char[] s) {
-        	char[] str = new char[2 * s.length + 1];
-        	str[0] = '#';
-        	for (int i = 0; i < s.length; i++) {
-            	str[2 * i + 1] = s[i];
-            	str[2 * i + 2] = '#';
-        	}
-        	return str;
-    	}
-    
+	    	char[] str = new char[2 * s.length + 1];
+	    	str[0] = '#';
+	    	for (int i = 0; i < s.length; i++) {
+	        	str[2 * i + 1] = s[i];
+	        	str[2 * i + 2] = '#';
+	    	}
+	    	return str;
+		}
+
 
 **思路二：** Manacher's Algorithms
 
@@ -79,7 +79,7 @@ tips：在每个字符的两边都插入一个特殊的符号，将所有可能�
 	    然后我们开始计算遍历位置5的可能回文地址s[5-2]是否等于s[5+2],相等的话回文半径+1，不等的话5的最大回文半径就是2了。
 	    
 	    这里就跳过计算5和5+2之前的字符是否相等了，因为根据回文特点我们已经计算过了（这个是决定算法复杂度是o(N)关键）
-	    
+
 ![图片一](/public/img/show3.jpeg)
 
 1. 算法思想一：rad[i] - k < rad[i - k]
@@ -100,47 +100,47 @@ tips：在每个字符的两边都插入一个特殊的符号，将所有可能�
 java代码：
 
 		public String longestPalindrome(String s) {
-        	if (s == null)
-            	return null;
-        	int n = s.length();
-        	int len = 2 * n + 1;
-        	int[] radius4EachCharacter = new int[len];
-        	char[] filledStr = fillStringBySign(s.toCharArray());
-        	int point4LongestPalindrome = 0, end4LongestPalindrome = -1, maxRadius = -1;
-        	for (int i = 0; i < len; i++) {
-            	if (end4LongestPalindrome > i) {
-                	radius4EachCharacter[i] = Math.min(radius4EachCharacter[2 * point4LongestPalindrome - i], end4LongestPalindrome - i);
-            	} else {
-                	radius4EachCharacter[i] = 1;
-            	}
-            	while (i - radius4EachCharacter[i] >= 0 && i + radius4EachCharacter[i] < len && filledStr[i - radius4EachCharacter[i]] == filledStr[i + radius4EachCharacter[i]]) {
-                	radius4EachCharacter[i]++;
-            	}
-            	if (radius4EachCharacter[i] > maxRadius) {
-                	end4LongestPalindrome = i + radius4EachCharacter[i] - 1;
-                	point4LongestPalindrome = i;
-                	maxRadius = radius4EachCharacter[i];
-            	}
-        	}
-        	char[] result = new char[maxRadius-1];
-        	int j = 0;
-        	for (int i = point4LongestPalindrome - maxRadius + 1; i < point4LongestPalindrome + maxRadius; i++) {
-            	if (filledStr[i] != '#') {
-                	result[j] = filledStr[i];
-                	j++;
-            	}
-        	}
-        	return String.valueOf(result);
-    	}
-
-    	private char[] fillStringBySign(char[] s) {
-        	char[] str = new char[2 * s.length + 1];
-        	str[0] = '#';
-        	for (int i = 0; i < s.length; i++) {
-            	str[2 * i + 1] = s[i];
-            	str[2 * i + 2] = '#';
-        	}
-        	return str;
+	    	if (s == null)
+	        	return null;
+	    	int n = s.length();
+	    	int len = 2 * n + 1;
+	    	int[] radius4EachCharacter = new int[len];
+	    	char[] filledStr = fillStringBySign(s.toCharArray());
+	    	int point4LongestPalindrome = 0, end4LongestPalindrome = -1, maxRadius = -1;
+	    	for (int i = 0; i < len; i++) {
+	        	if (end4LongestPalindrome > i) {
+	            	radius4EachCharacter[i] = Math.min(radius4EachCharacter[2 * point4LongestPalindrome - i], end4LongestPalindrome - i);
+	        	} else {
+	            	radius4EachCharacter[i] = 1;
+	        	}
+	        	while (i - radius4EachCharacter[i] >= 0 && i + radius4EachCharacter[i] < len && filledStr[i - radius4EachCharacter[i]] == filledStr[i + radius4EachCharacter[i]]) {
+	            	radius4EachCharacter[i]++;
+	        	}
+	        	if (radius4EachCharacter[i] > maxRadius) {
+	            	end4LongestPalindrome = i + radius4EachCharacter[i] - 1;
+	            	point4LongestPalindrome = i;
+	            	maxRadius = radius4EachCharacter[i];
+	        	}
+	    	}
+	    	char[] result = new char[maxRadius-1];
+	    	int j = 0;
+	    	for (int i = point4LongestPalindrome - maxRadius + 1; i < point4LongestPalindrome + maxRadius; i++) {
+	        	if (filledStr[i] != '#') {
+	            	result[j] = filledStr[i];
+	            	j++;
+	        	}
+	    	}
+	    	return String.valueOf(result);
+		}
+	
+		private char[] fillStringBySign(char[] s) {
+	    	char[] str = new char[2 * s.length + 1];
+	    	str[0] = '#';
+	    	for (int i = 0; i < s.length; i++) {
+	        	str[2 * i + 1] = s[i];
+	        	str[2 * i + 2] = '#';
+	    	}
+	    	return str;
    	 	}
 
 参考资料：
